@@ -1,20 +1,33 @@
+import { useState } from "react";
 import "./LoginAttemptList.css";
 
-export const LoginAttemptList = ({loginAttempts, setLoginAttempts}) => {
+export const LoginAttemptList = ({ loginAttempts, setLoginAttempts }) => {
 
-  console.log(loginAttempts);
-  return (
+    const [filteredLogins, setFilteredLogins] = useState(loginAttempts);
 
-	<div className="Attempt-List-Main">
-	 	<p>Recent activity</p>
-	  	<input type="input" placeholder="Filter..." />
-		<ul className="Attempt-List">
-            { loginAttempts.map((loginAttempt) => (
-            <li key={loginAttempt.username}>
-                <span>{loginAttempt.username}</span>
-            </li>
-            )) }
-		</ul>
-	</div>
-  )
+    console.log("filteredAttempts");
+    console.log(filteredLogins);
+
+    function handleFilter(event) {
+        setFilteredLogins(loginAttempts.filter(loginAttempt => loginAttempt.username === event.target.value));
+        console.log(event.target.value);
+    }
+
+    return (
+
+        <div className="Attempt-List-Main">
+            <p>Recent activity</p>
+            <input onChange={handleFilter} type="input" id="filter" placeholder="Filter..." />
+            <ul className="Attempt-List">
+                {filteredLogins.map(loginAttempt => {
+                    const { username, pass } = loginAttempt
+                    return (
+                        <li key={username}>
+                            {username} - {pass}
+                        </li>
+                    )
+                })}
+            </ul>
+        </div>
+    )
 }
