@@ -30,7 +30,7 @@ namespace DeveloperSample.Algorithms
             StringBuilder sb = new StringBuilder();
             
             string separtor = ", ";
-            //foreach (string item in items)
+
             for (int c = 0; c < items.Length; c++)
             {
                 if (items[c].Length > 0)
