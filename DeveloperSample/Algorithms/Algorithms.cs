@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 
@@ -25,30 +28,10 @@ namespace DeveloperSample.Algorithms
 
         public static string FormatSeparators(params string[] items) 
         {
+            string finalString = String.Join(", ", items, 0, items.Length - 1) + " and " + items.LastOrDefault();
 
-            //Assert.Equal("a, b and c", Algorithms.FormatSeparators("a", "b", "c"));
-            StringBuilder sb = new StringBuilder();
-            
-            string separtor = ", ";
-
-            for (int c = 0; c < items.Length; c++)
-            {
-                if (items[c].Length > 0)
-                {
-                    if (c == 0)
-                        separtor = ", ";
-                    else if (c < (items.Length - 1))
-                        separtor = " and ";
-                    else
-                        separtor = "";
-
-                    sb.Append(items[c]);
-                    sb.Append(separtor);
-                }
-            }
-
-            var s = sb.ToString();
-            return s;
+            return finalString;
+  
         }
     }
 }
