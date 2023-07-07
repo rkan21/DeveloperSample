@@ -6,15 +6,6 @@ import { LoginAttemptList } from "./components/LoginAttemptList";
 const App = () => {
   const [loginAttempts, setLoginAttempts] = useState([]);
 
-  function thing(){
-    const loginAttempt = {
-      username: "",
-      pass: ""
-      }
-      setLoginAttempts(loginAttempt);
-   }
-  
-
   return (
     <div className="App">
       <LoginForm loginAttempts={loginAttempts} setLoginAttempts={setLoginAttempts} />
