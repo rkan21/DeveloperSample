@@ -9,13 +9,13 @@ export const LoginAttemptList = ({ loginAttempts, setLoginAttempts }) => {
     console.log(filteredLogins);
 
     function handleFilter(event) {
-        setFilteredLogins(loginAttempts.filter(loginAttempt => loginAttempt.username === event.target.value));
+        setFilteredLogins(loginAttempts.filter(loginAttempt => loginAttempt.username.includes(event.target.value)));
         console.log(event.target.value);
     }
 
     function componentDidMount() {
         setFilteredLogins(filteredLogins);
-     }
+    }
 
     return (
 
