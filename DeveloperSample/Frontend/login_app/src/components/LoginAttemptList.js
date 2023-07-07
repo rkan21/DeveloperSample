@@ -13,11 +13,15 @@ export const LoginAttemptList = ({ loginAttempts, setLoginAttempts }) => {
         console.log(event.target.value);
     }
 
+    function componentDidMount() {
+        setFilteredLogins(filteredLogins);
+     }
+
     return (
 
         <div className="Attempt-List-Main">
             <p>Recent activity</p>
-            <input onChange={handleFilter} type="input" id="filter" placeholder="Filter..." />
+            <input onChange={handleFilter} onLoad={componentDidMount} type="input" id="filter" placeholder="Filter..." />
             <ul className="Attempt-List">
                 {filteredLogins.map(loginAttempt => {
                     const { username, pass } = loginAttempt
